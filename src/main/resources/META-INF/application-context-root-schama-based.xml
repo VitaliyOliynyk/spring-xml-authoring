@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:cc="http://vitaliy.eu/schema/cc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://vitaliy.eu/schema/cc http://vitaliy.eu/schema/cc/cc.xsd">
+
+    <bean id="tab1Controller" class="com.cc.controller.SimpleViewController" />
+    <bean id="tab2Controller" class="com.cc.controller.SimpleViewController" />
+    <bean id="tab3Controller" class="com.cc.controller.SimpleViewController" />
+
+    <cc:tabview id="tab1" name="tabs.tab1" url="tab1.html" controller="tab1Controller"/>
+
+    <bean id="tab2" class="com.cc.tabs.TabView">
+        <property name="name" value="tabs.tab2"/>
+        <property name="url" value="tab2.html"/>
+        <property name="controller" ref="tab2Controller"/>
+    </bean>
+
+    <bean id="tab3" class="com.cc.tabs.TabView">
+        <property name="name" value="tabs.tab3"/>
+        <property name="url" value="tab3.html"/>
+        <property name="controller" ref="tab3Controller"/>
+    </bean>
+
+    <bean id="tabsGroup1" class="com.cc.tabs.TabGroup">
+        <property name="name" value="tabs.stronaGlowna" />
+        <property name="url" value="stronaGlowna.html" />
+        <property name="tabs">
+            <list>
+                <ref local="tab1"/>
+                <ref local="tab2"/>
+                <ref local="tab3"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
