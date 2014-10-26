@@ -1,0 +1,6 @@
+[submodule "cc"]
+	path = cc
+	url = git@github.com:VitaliyOliynyk/cc.git
+[submodule "cc-spring"]
+	path = cc-spring
+	url = git@github.com:VitaliyOliynyk/cc-spring.git
