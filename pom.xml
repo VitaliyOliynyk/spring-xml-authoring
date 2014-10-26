@@ -6,11 +6,27 @@
     <artifactId>spring-xml-authoring</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <modules>
+        <module>cc</module>
+    </modules>
+
     <dependencies>
+
+        <dependency>
+            <groupId>eu.vitaliy</groupId>
+            <artifactId>cc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${mvn.spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
             <version>${mvn.spring.version}</version>
         </dependency>
 
@@ -45,7 +61,7 @@
     </dependencies>
 
     <properties>
-        <mvn.spring.version>3.1.0.RELEASE</mvn.spring.version>
+        <mvn.spring.version>3.2.9.RELEASE</mvn.spring.version>
         <mvn.project.build.sourceEncoding>UTF-8</mvn.project.build.sourceEncoding>
         <mvn.var1>Hello</mvn.var1>
         <mvn.main.class>eu.vitaliy.springxmlauthoring.Main</mvn.main.class>
