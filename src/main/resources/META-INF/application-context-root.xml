@@ -5,5 +5,38 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-     <bean id="wstepController" class="com.cc.controller.SimpleViewController" />
+    <bean id="tab1Controller" class="com.cc.controller.SimpleViewController" />
+    <bean id="tab2Controller" class="com.cc.controller.SimpleViewController" />
+    <bean id="tab3Controller" class="com.cc.controller.SimpleViewController" />
+
+    <bean id="tab1" class="com.cc.tabs.TabView">
+        <property name="name" value="tabs.tab1"/>
+        <property name="url" value="tab1.html"/>
+	    <property name="controller" ref="tab1Controller"/>
+    </bean>
+
+    <bean id="tab2" class="com.cc.tabs.TabView">
+        <property name="name" value="tabs.tab2"/>
+        <property name="url" value="tab2.html"/>
+        <property name="controller" ref="tab2Controller"/>
+    </bean>
+
+    <bean id="tab3" class="com.cc.tabs.TabView">
+        <property name="name" value="tabs.tab3"/>
+        <property name="url" value="tab2.html"/>
+        <property name="controller" ref="tab3Controller"/>
+    </bean>
+
+    <bean id="tabsGroup1" class="com.cc.tabs.TabGroup">
+        <property name="name" value="tabs.stronaGlowna" />
+        <property name="url" value="stronaGlowna.html" />
+        <property name="tabs">
+            <list>
+                <ref local="tab1"/>
+                <ref local="tab2"/>
+                <ref local="tab3"/>
+            </list>
+        </property>
+    </bean>
+
 </beans>
