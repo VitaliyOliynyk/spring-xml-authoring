@@ -23,7 +23,7 @@
 
     <bean id="tab3" class="com.cc.tabs.TabView">
         <property name="name" value="tabs.tab3"/>
-        <property name="url" value="tab2.html"/>
+        <property name="url" value="tab3.html"/>
         <property name="controller" ref="tab3Controller"/>
     </bean>
 
