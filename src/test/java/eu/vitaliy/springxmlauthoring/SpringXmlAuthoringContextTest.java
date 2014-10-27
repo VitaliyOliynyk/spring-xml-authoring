@@ -44,6 +44,7 @@ public class SpringXmlAuthoringContextTest extends AbstractTestNGSpringContextTe
     private void checkTabGroup(TabGroup tabGroup) {
         assertThat(tabGroup).isNotNull();
         assertThat(tabGroup.getTabs()).hasSize(COUNT_OF_TABS);
+        assertThat(tabGroup.getTabs()).contains(tab1, tab2, tab3);
     }
 
     private void checkTabs(TabView ...  tabs) {
