@@ -9,5 +9,13 @@
 	http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
    <context:component-scan base-package="eu.vitaliy.springcache"/>
+   <cache:annotation-driven />
 
+   <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="barszoWolnaMetodaCache"/>
+            </set>
+        </property>
+   </bean>
 </beans>

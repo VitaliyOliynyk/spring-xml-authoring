@@ -15,6 +15,7 @@ public class BardzoWolnyComponent {
     @Logger
     private Log log;
 
+    @Cacheable("barszoWolnaMetodaCache")
     public List<String> barszoWolnaMetoda(String parametr) {
         List<String> wynik = new ArrayList<String>(ROZMIAR_LISTY);
          for(int i=0; i<ROZMIAR_LISTY; i++) {
