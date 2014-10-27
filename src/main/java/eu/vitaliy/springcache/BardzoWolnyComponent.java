@@ -1,6 +1,7 @@
 package eu.vitaliy.springcache;
 
 import org.apache.commons.logging.Log;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
