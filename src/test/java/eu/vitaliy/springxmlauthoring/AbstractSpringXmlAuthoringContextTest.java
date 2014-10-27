@@ -3,6 +3,7 @@ package eu.vitaliy.springxmlauthoring;
 import com.cc.controller.SimpleViewController;
 import com.cc.tabs.TabGroup;
 import com.cc.tabs.TabView;
+import com.cc.tabs.TabView2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -27,7 +28,7 @@ public abstract class AbstractSpringXmlAuthoringContextTest extends AbstractTest
     private TabView tab1;
 
     @Autowired
-    private TabView tab2;
+    private TabView2 tab2;
 
     @Autowired
     private TabView tab3;
@@ -39,6 +40,8 @@ public abstract class AbstractSpringXmlAuthoringContextTest extends AbstractTest
     public void applicationContextTest() {
         checkControllers(tab1Controller, tab2Controller, tab3Controller);
         checkTabs(tab1, tab2, tab3);
+        assertThat(tab2).isInstanceOf(TabView2.class);
+        assertThat(tab2.getCustomProperty()).isEqualTo("propertyValue");
         checkTabGroup(tabGroup);
     }
 

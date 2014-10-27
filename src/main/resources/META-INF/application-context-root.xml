@@ -15,10 +15,11 @@
 	    <property name="controller" ref="tab1Controller"/>
     </bean>
 
-    <bean id="tab2" class="com.cc.tabs.TabView">
+    <bean id="tab2" class="com.cc.tabs.TabView2">
         <property name="name" value="tabs.tab2"/>
         <property name="url" value="tab2.html"/>
         <property name="controller" ref="tab2Controller"/>
+        <property name="customProperty" value="propertyValue"/>
     </bean>
 
     <bean id="tab3" class="com.cc.tabs.TabView">
