@@ -12,29 +12,9 @@
     <bean id="tab3Controller" class="com.cc.controller.SimpleViewController" />
 
     <cc:tabview id="tab1" name="tabs.tab1" url="tab1.html" controller="tab1Controller"/>
+    <cc:tabview id="tab2" name="tabs.tab2" url="tab2.html" controller="tab2Controller"/>
+    <cc:tabview id="tab3" name="tabs.tab3" url="tab3.html" controller="tab3Controller"/>
 
-    <bean id="tab2" class="com.cc.tabs.TabView">
-        <property name="name" value="tabs.tab2"/>
-        <property name="url" value="tab2.html"/>
-        <property name="controller" ref="tab2Controller"/>
-    </bean>
-
-    <bean id="tab3" class="com.cc.tabs.TabView">
-        <property name="name" value="tabs.tab3"/>
-        <property name="url" value="tab3.html"/>
-        <property name="controller" ref="tab3Controller"/>
-    </bean>
-
-    <bean id="tabsGroup1" class="com.cc.tabs.TabGroup">
-        <property name="name" value="tabs.stronaGlowna" />
-        <property name="url" value="stronaGlowna.html" />
-        <property name="tabs">
-            <list>
-                <ref local="tab1"/>
-                <ref local="tab2"/>
-                <ref local="tab3"/>
-            </list>
-        </property>
-    </bean>
+    <cc:tabgroup id="tabsGroup1" name="abs.stronaGlowna" url="stronaGlowna.html" tabs="tab1,tab2,tab3"/>
 
 </beans>
