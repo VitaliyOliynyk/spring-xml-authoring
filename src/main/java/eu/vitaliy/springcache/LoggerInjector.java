@@ -1,4 +1,4 @@
-package eu.vitaliy.springxmlauthoring.logger;
+package eu.vitaliy.springcache;
 
 import java.lang.reflect.Field;
 
