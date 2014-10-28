@@ -1,6 +1,7 @@
 package eu.vitaliy.springcache;
 
 import org.apache.commons.logging.Log;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,11 @@ public class BardzoWolnyComponent {
 
     @Logger
     private Log log;
+
+    @CacheEvict(value="barszoWolnaMetodaCache", allEntries=true)
+    public void dodajNoweDane(){
+    }
+
 
     @Cacheable(value="barszoWolnaMetodaCache", key = "#klucz+'_'+#uzytkownik", condition = "#uzytkownik.length() < 14")
     public List<String> barszoWolnaMetoda(String klucz, String uzytkownik, Date dataDostepu) {
