@@ -5,6 +5,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -15,11 +16,11 @@ public class BardzoWolnyComponent {
     @Logger
     private Log log;
 
-    @Cacheable("barszoWolnaMetodaCache")
-    public List<String> barszoWolnaMetoda(String parametr) {
+    @Cacheable(value="barszoWolnaMetodaCache", key = "#klucz+'_'+#uzytkownik", condition = "#uzytkownik.length() < 14")
+    public List<String> barszoWolnaMetoda(String klucz, String uzytkownik, Date dataDostepu) {
         List<String> wynik = new ArrayList<String>(ROZMIAR_LISTY);
          for(int i=0; i<ROZMIAR_LISTY; i++) {
-             String elementWyniku = parametr + "_" + i;
+             String elementWyniku = klucz + "_" + i;
              wynik.add(elementWyniku);
              sleep(200);
              log.info(elementWyniku);

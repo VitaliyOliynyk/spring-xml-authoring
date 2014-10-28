@@ -8,6 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 import static org.fest.assertions.Assertions.*;
+
+import java.util.Date;
 import java.util.List;
 
 @ContextConfiguration("classpath:/META-INF/application-context-springcache-root.xml")
@@ -21,19 +23,19 @@ public class SpringCacheTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void barszoWolnaMetodaTest() {
-        double czasWykonania = wykonajTestow(5, "parametr1");
+        double czasWykonania = wykonajTestow(5, "klucz1", "uzytkownik1", new Date());
         log.info("10 uruchomien za "+czasWykonania+"s");
 
-        czasWykonania = wykonajTestow(3, "parametr2");
+        czasWykonania = wykonajTestow(3, "klucz1", "uzytkownik1", new Date());
         log.info("10 uruchomien za "+czasWykonania+"s");
     }
 
-    private double wykonajTestow(int liczbaUruchomien, String nazwaParametru) {
+    private double wykonajTestow(int liczbaUruchomien, String klucz, String uzytkownik, Date dataDostepu) {
         long poczatek = System.nanoTime();
 
         for(int i=0;i<liczbaUruchomien;i++) {
             long poczatekUruchomenia = System.nanoTime();
-            List<String> wynik = bardzoWolnyComponent.barszoWolnaMetoda(nazwaParametru);
+            List<String> wynik = bardzoWolnyComponent.barszoWolnaMetoda(klucz, uzytkownik, dataDostepu);
             assertThat(wynik).hasSize(BardzoWolnyComponent.ROZMIAR_LISTY);
             log.info("Uruchomienie #"+(i+1) + " :" + ((System.nanoTime()-poczatekUruchomenia)/1000000000d)+ "s");
         }
