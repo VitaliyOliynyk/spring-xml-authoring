@@ -23,14 +23,11 @@ public class SpringCacheTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void barszoWolnaMetodaTest() {
-        double czasWykonania = wykonajTestow(5, "klucz1", "uzytkownik1", new Date());
-        log.info("10 uruchomien za "+czasWykonania+"s");
-
-        czasWykonania = wykonajTestow(3, "klucz1", "uzytkownik1", new Date());
-        log.info("10 uruchomien za "+czasWykonania+"s");
+        wykonajTestow(5, "klucz1", "uzytkownik1", new Date());
+        wykonajTestow(3, "klucz1", "uzytkownik1", new Date());
     }
 
-    private double wykonajTestow(int liczbaUruchomien, String klucz, String uzytkownik, Date dataDostepu) {
+    private void wykonajTestow(int liczbaUruchomien, String klucz, String uzytkownik, Date dataDostepu) {
         long poczatek = System.nanoTime();
 
         for(int i=0;i<liczbaUruchomien;i++) {
@@ -39,7 +36,7 @@ public class SpringCacheTest extends AbstractTestNGSpringContextTests {
             assertThat(wynik).hasSize(BardzoWolnyComponent.ROZMIAR_LISTY);
             log.info("Uruchomienie #"+(i+1) + " :" + ((System.nanoTime()-poczatekUruchomenia)/1000000000d)+ "s");
         }
-        return (System.nanoTime() - poczatek)/1000000000d;
+        log.info(liczbaUruchomien + " uruchomien za "+((System.nanoTime() - poczatek)/1000000000d)+"s");
     }
 
 
