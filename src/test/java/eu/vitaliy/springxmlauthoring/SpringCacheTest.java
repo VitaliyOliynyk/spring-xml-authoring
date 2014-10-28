@@ -23,15 +23,25 @@ public class SpringCacheTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void barszoWolnaMetodaTest() {
-        wykonajTestow(5, "klucz1", "uzytkownik1", new Date());
-        wykonajTestow(3, "klucz1", "uzytkownik1", new Date());
+        wykonajTestow(5, "klucz1", "uzytkownik1", new Date(), true);
+        wykonajTestow(3, "klucz1", "uzytkownik1", new Date(), true);
     }
 
-    private void wykonajTestow(int liczbaUruchomien, String klucz, String uzytkownik, Date dataDostepu) {
+    @Test
+    public void barszoWolnaMetodaInvalidateTest() {
+        wykonajTestow(1, "klucz1", "uzytkownik1", new Date(), false);
+        wykonajTestow(1, "klucz2", "uzytkownik2", new Date(), false);
+        bardzoWolnyComponent.dodajNoweDane("klucz1");
+        wykonajTestow(1, "klucz1", "uzytkownik1", new Date(), false);
+        wykonajTestow(1, "klucz2", "uzytkownik2", new Date(), false);
+    }
+
+
+    private void wykonajTestow(int liczbaUruchomien, String klucz, String uzytkownik, Date dataDostepu, boolean invaliduj) {
         long poczatek = System.nanoTime();
         for(int i=0;i<liczbaUruchomien;i++) {
-            if(i % 2 == 0) {
-                bardzoWolnyComponent.dodajNoweDane();
+            if(invaliduj && i % 2 == 0) {
+                bardzoWolnyComponent.dodajNoweDane(klucz);
             }
 
             long poczatekUruchomenia = System.nanoTime();

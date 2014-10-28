@@ -17,12 +17,12 @@ public class BardzoWolnyComponent {
     @Logger
     private Log log;
 
-    @CacheEvict(value="barszoWolnaMetodaCache", allEntries=true)
-    public void dodajNoweDane(){
+    @CacheEvict(value="barszoWolnaMetodaCache", key = "#klucz")
+    public void dodajNoweDane(String klucz){
     }
 
 
-    @Cacheable(value="barszoWolnaMetodaCache", key = "#klucz+'_'+#uzytkownik", condition = "#uzytkownik.length() < 14")
+    @Cacheable(value="barszoWolnaMetodaCache", key = "#klucz", condition = "#uzytkownik.length() < 14")
     public List<String> barszoWolnaMetoda(String klucz, String uzytkownik, Date dataDostepu) {
         List<String> wynik = new ArrayList<String>(ROZMIAR_LISTY);
          for(int i=0; i<ROZMIAR_LISTY; i++) {
